@@ -62,11 +62,16 @@ static inline uint8_t controller_read(int ctrl_num, uint8_t reg)
 #define MAX_GREEN 0x30
 #define MAX_BLUE  0x67
 #endif
-#if defined(BOARD_SAMUS) || defined(BOARD_RYU)
-/* Samus uses completely different LEDs, so the numbers are different. The
- * Samus LEDs can handle much higher currents, but these constants were
- * calibrated to provide uniform intensity at the level used by Link.
- * See crosbug.com/p/33017 before making any changes. */
+#if defined(BOARD_SAMUS)
+/* 
+ * The Samus LEDs could probably go a lot higher . . .
+ * but the lighbar isn't intended to replace headlights
+ */
+#define MAX_RED   0x80
+#define MAX_GREEN 0x80
+#define MAX_BLUE  0x80
+#endif
+#if defined(BOARD_RYU)
 #define MAX_RED   0x34
 #define MAX_GREEN 0x2c
 #define MAX_BLUE  0x40

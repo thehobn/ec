@@ -111,21 +111,21 @@ static const struct lightbar_params_v1 default_params = {
 	},
 	.s5_idx = 5,			       /* flash red */
 	.color = {
-		/*
-		 * These values have been optically calibrated for the
-		 * Samus LEDs to best match the official colors, described at
-		 * https://sites.google.com/a/google.com/brandsite/the-colours
-		 * See crosbug.com/p/33017 before making any changes.
+		/* 
+		 * Google colors have all been replaced with white (technically gray).
+		 * MAX_{RED,GREEN,BLUE} in lb_common.c have been increased so
+		 * LEDs are brighter. Tap battery colors are changed as well. 
 		 */
-		{0x34, 0x70, 0xb4},		/* 0: Google blue */
-		{0xbc, 0x50, 0x2c},		/* 1: Google red */
-		{0xd0, 0xe0, 0x00},		/* 2: Google yellow */
-		{0x50, 0xa0, 0x40},		/* 3: Google green */
-		/* These are primary colors */
-		{0x00, 0x00, 0xff},		/* 4: full blue */
-		{0xff, 0x00, 0x00},		/* 5: full red */
-		{0xff, 0xff, 0x00},		/* 6: full yellow */
-		{0x00, 0xff, 0x00},		/* 7: full green */
+		/* standard display colors */
+		{0x80, 0x80, 0x80},		/* 0: white */
+		{0x80, 0x80, 0x80},		/* 1: white */
+		{0x80, 0x80, 0x80},		/* 2: white */
+		{0x80, 0x80, 0x80},		/* 3: white */	
+		/* tap battery colors */
+		{0x00, 0x00, 0x00},		/* 4: currently (practically) unused */
+		{0x10, 0x00, 0x00},		/* 5: dark red */
+		{0x80, 0x80, 0x80},		/* 6: white */
+		{0x00, 0xff, 0xff},		/* 7: bright cyan */
 	},
 };
 
