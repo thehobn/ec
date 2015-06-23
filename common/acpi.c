@@ -109,7 +109,8 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			 * debug console.
 			 */
 			CPRINTF("\r[%T ACPI kblight %d]", data);
-			pwm_set_duty(PWM_CH_KBLIGHT, data);
+			/* Brightness is intentionally zeroed to disable keyboard backlight */
+			pwm_set_duty(PWM_CH_KBLIGHT, data*0);
 			break;
 #endif
 #ifdef CONFIG_FANS

@@ -33,7 +33,8 @@ static int command_kblight(int argc, char **argv)
 		int i = strtoi(argv[1], &e, 0);
 		if (*e)
 			return EC_ERROR_PARAM1;
-		pwm_set_duty(PWM_CH_KBLIGHT, i);
+		/* Brightness is intentionally zeroed to disable keyboard backlight */
+		pwm_set_duty(PWM_CH_KBLIGHT, i*0);
 	}
 
 	ccprintf("Keyboard backlight: %d%%\n", pwm_get_duty(PWM_CH_KBLIGHT));
@@ -65,7 +66,8 @@ int pwm_command_set_keyboard_backlight(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pwm_set_keyboard_backlight *p = args->params;
 
-	pwm_set_duty(PWM_CH_KBLIGHT, p->percent);
+	/* Brightness is intentionally zeroed to disable keyboard backlight */
+	pwm_set_duty(PWM_CH_KBLIGHT, p->percent*0);
 
 	return EC_RES_SUCCESS;
 }
@@ -89,7 +91,8 @@ static void pwm_kblight_init(void)
 	if (prev && version == PWM_HOOK_VERSION && size == sizeof(*prev)) {
 		/* Restore previous state. */
 		pwm_enable(PWM_CH_KBLIGHT, prev->kblight_en);
-		pwm_set_duty(PWM_CH_KBLIGHT, prev->kblight_percent);
+		/* Brightness is intentionally zeroed to disable keyboard backlight */
+		pwm_set_duty(PWM_CH_KBLIGHT, prev->kblight_percent*0);
 	} else {
 		/* Enable keyboard backlight control, turned down */
 		pwm_set_duty(PWM_CH_KBLIGHT, 0);
