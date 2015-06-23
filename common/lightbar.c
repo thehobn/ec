@@ -85,8 +85,8 @@ static const struct lightbar_params_v1 default_params = {
 	.tap_display_time = 3 * SECOND,		/* total sequence time */
 
 	/* TODO (crosbug.com/p/36996): remove unused tap_pct_red */
-	.tap_pct_red = 14,			/* below this is red */
-	.tap_pct_green = 94,			/* above this is green */
+	.tap_pct_red = 10,			/* below this is red */
+	.tap_pct_green = 99,			/* above this is green */
 	.tap_seg_min_on = 35,		        /* min intensity (%) for "on" */
 	.tap_seg_max_on = 100,			/* max intensity (%) for "on" */
 	.tap_seg_osc = 50,			/* amplitude for charging osc */
@@ -100,7 +100,7 @@ static const struct lightbar_params_v1 default_params = {
 	.bright_bl_on_min = {0xcc, 0xff},	/* backlight on: battery, AC */
 	.bright_bl_on_max = {0xcc, 0xff},	/* backlight on: battery, AC */
 
-	.battery_threshold = { 14, 40, 99 },	/* percent, lowest to highest */
+	.battery_threshold = { 10, 50, 99 },	/* percent, lowest to highest */
 	.s0_idx = {
 		{ 5, 4, 4, 4 },		/* battery: 0 = red, other = blue */
 		{ 4, 4, 4, 4 }		/* AC: always blue */
